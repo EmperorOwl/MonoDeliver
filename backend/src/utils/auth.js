@@ -11,9 +11,9 @@
  */
 const authMiddleware = async (req, res, next) => {
     const whitelist = req.path.includes("auth") || req.path === "/";
-    if (!req.app.locals.username && !whitelist) {
-        return res.status(401).send("Unauthorized");
-    }
+    // if (!req.app.locals.username && !whitelist) {
+    //     return res.status(401).send("Unauthorized");
+    // }
     next();
 };
 
