@@ -1,0 +1,65 @@
+<!-- Button -->
+<button
+  type="button"
+  data-bs-toggle="modal"
+  [attr.data-bs-target]="'#assignedDriverModal' + _id"
+>
+  👨‍💼
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  [attr.id]="'assignedDriverModal' + _id"
+  tabindex="-1"
+  aria-labelledby="assignedDriverModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="assignedDriverModalLabel">
+          Assigned Driver
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Table -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Department</th>
+              <th scope="col">Licence</th>
+              <th scope="col">Active</th>
+              <th scope="col">Created At</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ driver.id }}</td>
+              <td>{{ driver.name }}</td>
+              <td>{{ driver.department | title }}</td>
+              <td>{{ driver.licence }}</td>
+              <td>{{ driver.isActive | bool }}</td>
+              <td>{{ driver.createdAt | date }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

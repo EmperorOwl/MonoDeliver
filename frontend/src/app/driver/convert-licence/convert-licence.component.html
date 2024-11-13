@@ -1,0 +1,67 @@
+<!-- Button -->
+<button
+  type="button"
+  data-bs-toggle="modal"
+  [attr.data-bs-target]="'#convertLicenceModal' + _id"
+>
+  🎵
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  [attr.id]="'convertLicenceModal' + _id"
+  tabindex="-1"
+  aria-labelledby="convertLicenceModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="convertLicenceModalLabel">
+          Text to Speech Licence
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <!-- Voice -->
+            <div class="form-floating">
+              <select
+                class="form-select"
+                name="language"
+                [(ngModel)]="voice"
+                (change)="convert()"
+              >
+                @for (voice of voices; track $index) {
+                <option value="{{ voice.code }}">
+                  {{ voice.name }}
+                </option>
+                }
+              </select>
+              <label>Voice</label>
+            </div>
+          </div>
+
+          <div class="col">
+            <!-- Audio -->
+            <audio [src]="audioUrl" controls></audio>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,106 @@
+<button
+  type="button"
+  class="btn btn-primary btn-sm"
+  data-bs-toggle="modal"
+  data-bs-target="#addDriverModal"
+>
+  Add driver
+</button>
+
+<div
+  class="modal fade"
+  id="addDriverModal"
+  tabindex="-1"
+  aria-labelledby="addDriverModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="addDriverModalLabel">Add Driver</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <!-- Driver Name -->
+          <div class="col">
+            <div class="form-floating">
+              <input
+                class="form-control"
+                name="name"
+                placeholder=""
+                [(ngModel)]="driver.name"
+              />
+              <label>Name</label>
+            </div>
+          </div>
+          <!-- Driver Department -->
+          <div class="col">
+            <div class="form-floating">
+              <select
+                class="form-select"
+                name="department"
+                [(ngModel)]="driver.department"
+              >
+                @for (department of validDepartments(); track department) {
+                <option value="{{ department }}">
+                  {{ department | title }}
+                </option>
+                }
+              </select>
+              <label>Department</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <!-- Driver Licence -->
+          <div class="col">
+            <div class="form-floating">
+              <input
+                class="form-control"
+                name="licence"
+                placeholder=""
+                [(ngModel)]="driver.licence"
+              />
+              <label>Licence</label>
+            </div>
+          </div>
+          <!-- Driver Active -->
+          <div class="col">
+            <div class="form-floating">
+              <select
+                class="form-select"
+                name="isActive"
+                [(ngModel)]="driver.isActive"
+              >
+                <option value="true" selected>Yes</option>
+                <option value="false">No</option>
+              </select>
+              <label>Active</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="add()"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

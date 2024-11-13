@@ -1,0 +1,74 @@
+<div class="container m-5 p-5">
+  <!-- Page Title -->
+  <h2>List of Drivers</h2>
+
+  <!-- Action Buttons  -->
+  <div class="d-flex flex-wrap gap-1 mt-3 mb-2">
+    <app-add-driver (success)="loadDrivers()"></app-add-driver>
+    <div>
+      <div class="input-group input-group-sm">
+        <label class="input-group-text">Department</label>
+        <select
+          class="form-select"
+          name="department"
+          [(ngModel)]="filter"
+          (change)="loadDrivers()"
+        >
+          @for (choice of choices(); track choice) {
+          <option value="{{ choice }}">
+            {{ choice | title }}
+          </option>
+          }
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- List of Drivers -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Department</th>
+        <th scope="col">Licence</th>
+        <th scope="col">Active</th>
+        <th scope="col">Packages</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (driver of drivers; track driver._id) {
+      <tr>
+        <td>{{ driver.id }}</td>
+        <td>{{ driver.name | upper }}</td>
+        <td>{{ driver.department | title }}</td>
+        <td>{{ driver.licence }}</td>
+        <td>{{ driver.isActive | bool }}</td>
+        <td>{{ driver.assignedPackages.length }}</td>
+        <td>{{ driver.createdAt | date }}</td>
+        <td>
+          <app-assigned-packages
+            _id="{{ driver._id }}"
+            [packages]="driver.assignedPackages"
+          >
+          </app-assigned-packages>
+          <app-convert-licence
+            _id="{{ driver._id }}"
+            [licence]="driver.licence"
+          ></app-convert-licence>
+          <app-update-driver
+            _id="{{ driver._id }}"
+            (success)="loadDrivers()"
+          ></app-update-driver>
+          <app-delete-driver
+            _id="{{ driver._id }}"
+            (success)="loadDrivers()"
+          ></app-delete-driver>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

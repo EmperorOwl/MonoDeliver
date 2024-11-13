@@ -1,0 +1,43 @@
+<!-- Button -->
+<button
+  type="button"
+  data-bs-toggle="modal"
+  [attr.data-bs-target]="'#calculateDistanceModal' + _id"
+>
+  📏
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  [attr.id]="'calculateDistanceModal' + _id"
+  tabindex="-1"
+  aria-labelledby="calculateDistanceModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="calculateDistanceModalLabel">
+          Calculate Distance between {{ source }} and {{ destination }}
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        {{ distance }}
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

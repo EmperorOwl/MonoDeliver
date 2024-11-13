@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-center m-5 p-5">
+  <div class="w-50 p-3 border border-3 rounded text-center">
+    <h5 class="mb-3">Stats</h5>
+    <table class="table">
+      <thead class="table-secondary">
+        <tr>
+          <th scope="col">Operation</th>
+          <th scope="col">Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-success">
+          <td>Create</td>
+          <td>{{ stats.create }}</td>
+        </tr>
+        <tr class="table-primary">
+          <td>Retrieve</td>
+          <td>{{ stats.retrieve }}</td>
+        </tr>
+        <tr class="table-warning">
+          <td>Update</td>
+          <td>{{ stats.update }}</td>
+        </tr>
+        <tr class="table-danger">
+          <td>Delete</td>
+          <td>{{ stats.delete }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table">
+      <thead class="table-secondary">
+        <tr>
+          <th scope="col">Model</th>
+          <th scope="col">Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="">
+          <td>Driver</td>
+          <td>{{ driverCount }}</td>
+        </tr>
+        <tr class="">
+          <td>Package</td>
+          <td>{{ packageCount }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

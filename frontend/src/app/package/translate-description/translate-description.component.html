@@ -1,0 +1,76 @@
+<!-- Button -->
+<button
+  type="button"
+  data-bs-toggle="modal"
+  [attr.data-bs-target]="'#translateDescriptionModal' + _id"
+>
+  🌐
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  [attr.id]="'translateDescriptionModal' + _id"
+  tabindex="-1"
+  aria-labelledby="translateDescriptionModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="translateDescriptionModalLabel">
+          Translate Description
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-4">
+            <!-- Language -->
+            <div class="form-floating">
+              <select
+                class="form-select"
+                name="language"
+                [(ngModel)]="language"
+                (change)="translate()"
+              >
+                @for (language of languages; track $index) {
+                <option value="{{ language.code }}">
+                  {{ language.name }}
+                </option>
+                }
+              </select>
+              <label>Language</label>
+            </div>
+          </div>
+
+          <div class="col">
+            <!-- Translation -->
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                name="translation"
+                [(ngModel)]="translation"
+                readonly
+                style="resize: none; overflow: hidden"
+              ></textarea>
+              <label>Translation</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<!-- Button -->
+<button
+  type="button"
+  data-bs-toggle="modal"
+  [attr.data-bs-target]="'#assignedPackagesModal' + _id"
+>
+  📦
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  [attr.id]="'assignedPackagesModal' + _id"
+  tabindex="-1"
+  aria-labelledby="assignedPackagesModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" [ngClass]="{ 'modal-lg': packages.length > 0 }">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="assignedPackagesModalLabel">
+          Assigned Packages
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        @if (packages.length > 0) {
+        <!-- Table -->
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Weight</th>
+              <th scope="col">Destination</th>
+              <th scope="col">Description</th>
+              <th scope="col">Allocated</th>
+              <th scope="col">Created At</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (package of packages; track package._id) {
+            <tr>
+              <td>{{ package.id }}</td>
+              <td>{{ package.title }}</td>
+              <td>{{ package.weight | weight }}</td>
+              <td>{{ package.destination }}</td>
+              <td>{{ package.description }}</td>
+              <td>{{ package.isAllocated | bool }}</td>
+              <td>{{ package.createdAt | date }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+        } @else {
+        <p class="mt-2">No packages assigned.</p>
+        }
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

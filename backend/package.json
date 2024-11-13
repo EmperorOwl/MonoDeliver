@@ -1,0 +1,36 @@
+{
+  "name": "fit2095-a3",
+  "version": "1.0.0",
+  "description": "FIT2095 Assignment 3",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest",
+    "test-win": "cls && jest --verbose --runInBand",
+    "test-mac": "clear && jest --verbose --runInBand",
+    "dev": "nodemon server.js",
+    "docs": "jsdoc -r -c conf.json -d docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.infotech.monash.edu/fit2095/fit2095-s2-2024/projects/rlin0032/Assignment-3.git"
+  },
+  "author": "Ray Lin",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/text-to-speech": "^5.4.0",
+    "@google-cloud/translate": "^8.5.0",
+    "@google/generative-ai": "^0.21.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "firebase-admin": "^12.4.0",
+    "mongoose": "^8.5.4",
+    "morgan": "^1.10.0",
+    "socket.io": "^4.8.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}

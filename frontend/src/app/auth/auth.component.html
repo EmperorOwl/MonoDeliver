@@ -1,0 +1,80 @@
+<div class="container m-5 p-5">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="border border-primary-subtle border-4 rounded p-4 shadow-lg">
+        <h3 class="text-center mb-4">Sign In</h3>
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            name="username"
+            placeholder=""
+            [(ngModel)]="login.username"
+          />
+          <label>Username</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            type="password"
+            name="password"
+            placeholder=""
+            [(ngModel)]="login.password"
+          />
+          <label>Password</label>
+        </div>
+        <input
+          type="submit"
+          class="btn btn-primary"
+          value="Login"
+          (click)="loginUser()"
+        />
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="border border-4 rounded p-4 shadow-lg">
+        <h3 class="text-center text-muted mb-4">Sign Up</h3>
+        @if (!accountCreated) {
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            name="username"
+            placeholder=""
+            [(ngModel)]="register.username"
+          />
+          <label>Username</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            type="password"
+            name="password"
+            placeholder=""
+            [(ngModel)]="register.password"
+          />
+          <label>Password</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            type="password"
+            name="password2"
+            placeholder=""
+            [(ngModel)]="register.password2"
+          />
+          <label>Confirm Password</label>
+        </div>
+        <input
+          type="submit"
+          class="btn btn-secondary"
+          value="Register"
+          (click)="registerUser()"
+        />
+        } @else {
+        <div class="alert alert-success" role="alert">
+          Success! Your account has been created. Please log in.
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

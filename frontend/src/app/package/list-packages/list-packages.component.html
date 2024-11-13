@@ -1,0 +1,67 @@
+<div class="container m-5 p-5">
+  <!-- Title -->
+  <h2>List of Packages</h2>
+
+  <!-- Actions -->
+  <div class="d-flex flex-wrap gap-1 mt-3 mb-2">
+    <app-add-package (success)="loadPackages()"></app-add-package>
+  </div>
+
+  <!-- Table -->
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Description</th>
+        <th scope="col">Allocated</th>
+        <th scope="col">Driver ID</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (package of packages; track package._id) {
+      <tr>
+        <td>{{ package.id }}</td>
+        <td>{{ package.title }}</td>
+        <td>{{ package.weight | weight }}</td>
+        <td>{{ package.destination }}</td>
+        <td>{{ package.description }}</td>
+        <td>{{ package.isAllocated | bool }}</td>
+        <td>{{ package.driverId.id }}</td>
+        <td>{{ package.createdAt | date }}</td>
+        <td>
+          <app-assigned-driver
+            _id="{{ package._id }}"
+            [driver]="package.driverId"
+          >
+          </app-assigned-driver>
+          <app-translate-description
+            _id="{{ package._id }}"
+            [description]="package.description"
+          >
+          </app-translate-description>
+          <app-calculate-distance
+            _id="{{ package._id }}"
+            [destination]="package.destination"
+          >
+          </app-calculate-distance>
+          <app-update-package
+            _id="{{ package._id }}"
+            (success)="loadPackages()"
+          >
+          </app-update-package>
+          <app-delete-package
+            _id="{{ package._id }}"
+            (success)="loadPackages()"
+          >
+          </app-delete-package>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

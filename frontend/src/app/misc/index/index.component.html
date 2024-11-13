@@ -1,0 +1,31 @@
+<div class="container m-5 p-5">
+  <h2>Welcome! What would you like to do today?</h2>
+
+  <!-- Driver Links -->
+  <div class="row mt-4 p-4 border border-3 rounded">
+    <h5 class="">Manage your drivers.</h5>
+    <div class="col">
+      <p>You currently have {{ driverCount }} drivers.</p>
+      <div class="d-flex flex-wrap gap-1">
+        <app-add-driver (success)="redirectToListDrivers()"></app-add-driver>
+        <a class="btn btn-secondary btn-sm" routerLink="/drivers"
+          >View drivers</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Package Links -->
+  <div class="row mt-4 p-4 border border-3 rounded">
+    <h5 class="">Manage your packages.</h5>
+    <div class="col">
+      <p>You currently have {{ packageCount }} packages.</p>
+      <div class="d-flex flex-wrap gap-1">
+        <app-add-package (success)="redirectToListPackages()"></app-add-package>
+        <a class="btn btn-secondary btn-sm" routerLink="/packages"
+          >View packages</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
